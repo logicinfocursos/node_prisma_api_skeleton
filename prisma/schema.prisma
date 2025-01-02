@@ -1,0 +1,42 @@
+// prisma\schema.prisma
+//
+// principais comandos:
+//    npx prisma migrate dev --name init
+//    npx prisma generate
+//    npx prisma studio
+//
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cart {
+  id        Int       @id @default(autoincrement())
+  custommer String?
+  products  Product[]
+
+  @@map("carts")
+}
+
+model Product {
+  id         Int       @id @default(autoincrement())
+  categoryId Int?
+  name       String?
+  price      Float?
+  carts      Cart[]
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  @@map("products")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String?
+  products Product[]
+
+  @@map("categories")
+}
