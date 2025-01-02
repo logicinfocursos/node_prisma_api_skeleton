@@ -1,1 +1,2 @@
 # node_prisma_api_skeleton
+Esse exemplo visa de forma resumida ser uma estrutura de projetos de apis em node js, tentando evitar a repetição de código e ao mesmo tempo ser algo prático e escalável, podendo ser usado como base para projetos de grandes proporções. Ele é dividido entre repositories e services, os primeiros fazem as operações de crud através do orm prisma e o segundo realiza operações complementares se apropriando dos repositories já existentes.
